@@ -1,1 +1,785 @@
-{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations & Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":117,"iteration":1618477788924,"links":[],"panels":[{"aliasColors":{},"bars":true,"dashLength":10,"dashes":false,"datasource":"loki-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"mappings":[],"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"red","value":80}]}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":8,"w":24,"x":0,"y":0},"hiddenSeries":false,"id":2,"interval":"1m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":false,"total":false,"values":false},"lines":false,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","repeat":"domain","repeatDirection":"v","scopedVars":{"domain":{"selected":false,"text":"infra/apac-dc","value":"infra/apac-dc"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))","legendFormat":"{{client_name}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"$domain","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":true,"dashLength":10,"dashes":false,"datasource":"loki-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"mappings":[],"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"red","value":80}]}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":8,"w":24,"x":0,"y":8},"hiddenSeries":false,"id":3,"interval":"1m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":false,"total":false,"values":false},"lines":false,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","repeatDirection":"v","repeatIteration":1618477788924,"repeatPanelId":2,"scopedVars":{"domain":{"selected":false,"text":"infra/chi-dc","value":"infra/chi-dc"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))","legendFormat":"{{client_name}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"$domain","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":true,"dashLength":10,"dashes":false,"datasource":"loki-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"mappings":[],"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"red","value":80}]}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":8,"w":24,"x":0,"y":16},"hiddenSeries":false,"id":4,"interval":"1m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":false,"total":false,"values":false},"lines":false,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","repeatDirection":"v","repeatIteration":1618477788924,"repeatPanelId":2,"scopedVars":{"domain":{"selected":false,"text":"infra/global-dc","value":"infra/global-dc"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))","legendFormat":"{{client_name}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"$domain","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":true,"dashLength":10,"dashes":false,"datasource":"loki-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"mappings":[],"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"red","value":80}]}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":8,"w":24,"x":0,"y":24},"hiddenSeries":false,"id":5,"interval":"1m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":false,"total":false,"values":false},"lines":false,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","repeatDirection":"v","repeatIteration":1618477788924,"repeatPanelId":2,"scopedVars":{"domain":{"selected":false,"text":"infra/lon-dc","value":"infra/lon-dc"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))","legendFormat":"{{client_name}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"$domain","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":true,"dashLength":10,"dashes":false,"datasource":"loki-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"mappings":[],"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"red","value":80}]}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":8,"w":24,"x":0,"y":32},"hiddenSeries":false,"id":6,"interval":"1m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":false,"total":false,"values":false},"lines":false,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","repeatDirection":"v","repeatIteration":1618477788924,"repeatPanelId":2,"scopedVars":{"domain":{"selected":false,"text":"infra/saopaulo-dc","value":"infra/saopaulo-dc"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))","legendFormat":"{{client_name}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"$domain","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":true,"dashLength":10,"dashes":false,"datasource":"loki-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"mappings":[],"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"red","value":80}]}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":8,"w":24,"x":0,"y":40},"hiddenSeries":false,"id":7,"interval":"1m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":false,"total":false,"values":false},"lines":false,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","repeatDirection":"v","repeatIteration":1618477788924,"repeatPanelId":2,"scopedVars":{"domain":{"selected":false,"text":"infra/shi-dc","value":"infra/shi-dc"}},"seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))","legendFormat":"{{client_name}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"$domain","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":null,"current":{"selected":true,"text":"All","value":"$__all"},"datasource":"loki-onprem-prod","definition":"label_values({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=\"infra/apac-dc\"}, app_mintel_com_job_label)","error":null,"hide":0,"includeAll":true,"label":"domain","multi":false,"name":"domain","options":[],"query":"label_values({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=\"infra/apac-dc\"}, app_mintel_com_job_label)","refresh":2,"regex":"/infra/.*-dc/","skipUrlSync":false,"sort":0,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-1h","to":"now"},"timepicker":{},"timezone":"","title":"SMBv1 Queries (Domain Controllers)","uid":"biTCMtXGz","version":3}
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations \u0026 Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 117,
+  "iteration": 1618477788924,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "loki-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "domain",
+      "repeatDirection": "v",
+      "scopedVars": {
+        "domain": {
+          "selected": false,
+          "text": "infra/apac-dc",
+          "value": "infra/apac-dc"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))",
+          "legendFormat": "{{client_name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$domain",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "loki-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "v",
+      "repeatIteration": 1618477788924,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "domain": {
+          "selected": false,
+          "text": "infra/chi-dc",
+          "value": "infra/chi-dc"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))",
+          "legendFormat": "{{client_name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$domain",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "loki-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "v",
+      "repeatIteration": 1618477788924,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "domain": {
+          "selected": false,
+          "text": "infra/global-dc",
+          "value": "infra/global-dc"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))",
+          "legendFormat": "{{client_name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$domain",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "loki-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "v",
+      "repeatIteration": 1618477788924,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "domain": {
+          "selected": false,
+          "text": "infra/lon-dc",
+          "value": "infra/lon-dc"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))",
+          "legendFormat": "{{client_name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$domain",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "loki-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "v",
+      "repeatIteration": 1618477788924,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "domain": {
+          "selected": false,
+          "text": "infra/saopaulo-dc",
+          "value": "infra/saopaulo-dc"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))",
+          "legendFormat": "{{client_name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$domain",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "loki-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "hiddenSeries": false,
+      "id": 7,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "v",
+      "repeatIteration": 1618477788924,
+      "repeatPanelId": 2,
+      "scopedVars": {
+        "domain": {
+          "selected": false,
+          "text": "infra/shi-dc",
+          "value": "infra/shi-dc"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "(sum by (client_name) (count_over_time({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=~\"$domain\"} [1m])))",
+          "legendFormat": "{{client_name}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$domain",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "loki-onprem-prod",
+        "definition": "label_values({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=\"infra/apac-dc\"}, app_mintel_com_job_label)",
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "domain",
+        "multi": false,
+        "name": "domain",
+        "options": [],
+        "query": "label_values({job=\"winlog\", channel=\"Microsoft-Windows-SMBServer/Audit\", app_mintel_com_job_label=\"infra/apac-dc\"}, app_mintel_com_job_label)",
+        "refresh": 2,
+        "regex": "/infra/.*-dc/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "SMBv1 Queries (Domain Controllers)",
+  "uid": "biTCMtXGz",
+  "version": 3
+}

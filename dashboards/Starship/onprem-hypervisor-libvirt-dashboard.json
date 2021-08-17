@@ -1,1 +1,541 @@
-{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations & Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":38,"iteration":1618394142197,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":4,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":true,"steppedLine":false,"targets":[{"expr":"rate(libvirt_domain_info_cpu_time_seconds_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]) / 1000000000 / on (instance) group_left instance:node_cpus:count{instance=~\"$hypervisor\"}","hide":false,"instant":false,"interval":"","legendFormat":"{{domain}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"VM CPU Time","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:312","format":"percentunit","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:313","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":false}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":12,"y":0},"hiddenSeries":false,"id":2,"legend":{"alignAsTable":false,"avg":false,"current":false,"hideZero":false,"max":false,"min":false,"rightSide":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[{"$$hashKey":"object:88","alias":"/.* - Read/","transform":"negative-Y"}],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum by (domain)(rate(libvirt_domain_block_stats_read_bytes_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]))","interval":"","legendFormat":"{{domain}} - Read","refId":"A"},{"expr":"sum by (domain)(rate(libvirt_domain_block_stats_write_bytes_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]))","interval":"","legendFormat":"{{domain}} - Write","refId":"B"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"VM Block Device I/O","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:124","format":"binBps","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:125","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":false}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":0,"y":9},"hiddenSeries":false,"id":6,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":true,"steppedLine":false,"targets":[{"expr":"libvirt_domain_info_memory_usage_bytes{instance=~\"$hypervisor\", domain=~\"$domain\"}","interval":"","legendFormat":"{{domain}}","refId":"A"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"VM Memory Allocation","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:628","format":"bytes","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:629","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":false}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":9,"w":12,"x":12,"y":9},"hiddenSeries":false,"id":7,"legend":{"alignAsTable":false,"avg":false,"current":false,"hideZero":false,"max":false,"min":false,"rightSide":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[{"$$hashKey":"object:88","alias":"/.* - Rx/","transform":"negative-Y"}],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"sum by (domain)(rate(libvirt_domain_interface_stats_receive_bytes_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]))","interval":"","legendFormat":"{{domain}} - Rx","refId":"A"},{"expr":"sum by (domain)(rate(libvirt_domain_interface_stats_transmit_bytes_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]))","interval":"","legendFormat":"{{domain}} - Tx","refId":"B"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"VM Network I/O","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:124","format":"binBps","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:125","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":false}],"yaxis":{"align":false,"alignLevel":null}}],"refresh":false,"schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":null,"current":{"selected":false,"text":"All","value":"$__all"},"datasource":"cortex-onprem-prod","definition":"label_values(libvirt_up, app_mintel_com_site)","error":null,"hide":0,"includeAll":true,"label":"Site","multi":false,"name":"site","options":[],"query":"label_values(libvirt_up, app_mintel_com_site)","refresh":2,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allValue":null,"current":{"selected":false,"text":"alia.lon-dc.mintel.ad","value":"alia.lon-dc.mintel.ad"},"datasource":"cortex-onprem-prod","definition":"label_values(libvirt_up{app_mintel_com_site=~\"$site\"}, instance)","error":null,"hide":0,"includeAll":false,"label":"Hypervisor","multi":false,"name":"hypervisor","options":[],"query":"label_values(libvirt_up{app_mintel_com_site=~\"$site\"}, instance)","refresh":2,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allValue":null,"current":{"selected":false,"text":"All","value":"$__all"},"datasource":"cortex-onprem-prod","definition":"label_values(libvirt_domain_info_virtual_cpus{app_mintel_com_site=~\"$site\",instance=~\"$hypervisor\"}, domain)","error":null,"hide":0,"includeAll":true,"label":"VM","multi":false,"name":"domain","options":[],"query":"label_values(libvirt_domain_info_virtual_cpus{app_mintel_com_site=~\"$site\",instance=~\"$hypervisor\"}, domain)","refresh":2,"regex":"","skipUrlSync":false,"sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-3h","to":"now"},"timepicker":{},"timezone":"","title":"Hypervisor Libvirt Domain Stats","uid":"nk3p9j_Gz","version":1}
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations \u0026 Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 38,
+  "iteration": 1618394142197,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(libvirt_domain_info_cpu_time_seconds_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]) / 1000000000 / on (instance) group_left instance:node_cpus:count{instance=~\"$hypervisor\"}",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{domain}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "VM CPU Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:312",
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:313",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:88",
+          "alias": "/.* - Read/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (domain)(rate(libvirt_domain_block_stats_read_bytes_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]))",
+          "interval": "",
+          "legendFormat": "{{domain}} - Read",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (domain)(rate(libvirt_domain_block_stats_write_bytes_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]))",
+          "interval": "",
+          "legendFormat": "{{domain}} - Write",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "VM Block Device I/O",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:124",
+          "format": "binBps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:125",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "libvirt_domain_info_memory_usage_bytes{instance=~\"$hypervisor\", domain=~\"$domain\"}",
+          "interval": "",
+          "legendFormat": "{{domain}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "VM Memory Allocation",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:628",
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:629",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "hiddenSeries": false,
+      "id": 7,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:88",
+          "alias": "/.* - Rx/",
+          "transform": "negative-Y"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by (domain)(rate(libvirt_domain_interface_stats_receive_bytes_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]))",
+          "interval": "",
+          "legendFormat": "{{domain}} - Rx",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (domain)(rate(libvirt_domain_interface_stats_transmit_bytes_total{instance=~\"$hypervisor\", domain=~\"$domain\"}[5m]))",
+          "interval": "",
+          "legendFormat": "{{domain}} - Tx",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "VM Network I/O",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:124",
+          "format": "binBps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:125",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "cortex-onprem-prod",
+        "definition": "label_values(libvirt_up, app_mintel_com_site)",
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "Site",
+        "multi": false,
+        "name": "site",
+        "options": [],
+        "query": "label_values(libvirt_up, app_mintel_com_site)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "alia.lon-dc.mintel.ad",
+          "value": "alia.lon-dc.mintel.ad"
+        },
+        "datasource": "cortex-onprem-prod",
+        "definition": "label_values(libvirt_up{app_mintel_com_site=~\"$site\"}, instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Hypervisor",
+        "multi": false,
+        "name": "hypervisor",
+        "options": [],
+        "query": "label_values(libvirt_up{app_mintel_com_site=~\"$site\"}, instance)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "cortex-onprem-prod",
+        "definition": "label_values(libvirt_domain_info_virtual_cpus{app_mintel_com_site=~\"$site\",instance=~\"$hypervisor\"}, domain)",
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "VM",
+        "multi": false,
+        "name": "domain",
+        "options": [],
+        "query": "label_values(libvirt_domain_info_virtual_cpus{app_mintel_com_site=~\"$site\",instance=~\"$hypervisor\"}, domain)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Hypervisor Libvirt Domain Stats",
+  "uid": "nk3p9j_Gz",
+  "version": 1
+}

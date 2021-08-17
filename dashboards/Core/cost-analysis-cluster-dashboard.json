@@ -1,1 +1,1393 @@
-{"__inputs":[],"__requires":[],"annotations":{"list":[]},"description":"Provides an analysis of costs by cluster","editable":"false","gnetId":null,"graphTooltip":0,"hideControls":false,"id":null,"links":[],"panels":[{"content":"This dashboard shows indicative monthly costing for the cluster, based on current requests for CPU, RAM and Storage.\nCurrent Region Prices are for BELGIUM.\n","datasource":null,"gridPos":{"h":2,"w":24,"x":0,"y":0},"id":2,"mode":"markdown","title":"","transparent":true,"type":"text"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["rgba(245, 54, 54, 0.9)","rgba(50, 172, 45, 0.97)","#c15c17"],"datasource":"$ds","decimals":2,"description":"This gauge shows the current CPU use vs CPU available","format":"percent","gauge":{"maxValue":100,"minValue":0,"show":true,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":4,"w":3,"x":0,"y":0},"height":200,"id":3,"interval":"1m","links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":null,"postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"sum (rate (container_cpu_usage_seconds_total{id!=\"/\",service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}[$__interval])) / sum (machine_cpu_cores{service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}) * 100\n","format":"time_series","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"","refId":"A"}],"thresholds":"30, 80","title":"CPU Utilisation","transparent":true,"type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["rgba(245, 54, 54, 0.9)","rgba(50, 172, 45, 0.97)","#c15c17"],"datasource":"$ds","decimals":2,"description":"This panel shows current CPU reservation requests by applications, vs CPU available","format":"percent","gauge":{"maxValue":100,"minValue":0,"show":true,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":4,"w":3,"x":3,"y":0},"height":200,"id":4,"interval":"1m","links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":null,"postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"(sum(kube_pod_container_resource_requests_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) / sum (kube_node_status_allocatable_cpu_cores{app_mintel_com_data_source=\"$cluster\"})) * 100\n","format":"time_series","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"","refId":"A"}],"thresholds":"30, 80","title":"CPU Requests","transparent":true,"type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"$ds","decimals":2,"format":"currencyUSD","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":4,"w":4,"x":6,"y":0},"height":200,"id":5,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":null,"postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":true,"lineColor":"rgb(31, 120, 193)","show":true},"tableColumn":"","targets":[{"expr":"sum(((sum(kube_node_status_capacity_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node)\n  * on (node) group_left (label_cloud_google_com_gke_preemptible) kube_node_labels{label_cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"})\n  * $costpcpu) or ((sum(kube_node_status_capacity_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node)\n  * on (node) group_left (label_cloud_google_com_gke_preemptible) kube_node_labels{label_cloud_google_com_gke_preemptible!=\"true\",app_mintel_com_data_source=\"$cluster\"})\n  * ($costcpu - ($costcpu / 100 * $costDiscount))))\n","format":"time_series","instant":false,"interval":"1m","intervalFactor":2,"legendFormat":"","refId":"A"}],"thresholds":"","title":"CPU Cost","type":"singlestat","valueFontSize":"80%","valueMaps":[],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"$ds","decimals":2,"format":"currencyUSD","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":4,"w":4,"x":10,"y":0},"height":200,"id":6,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":null,"postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":true,"lineColor":"rgb(31, 120, 193)","show":true},"tableColumn":"","targets":[{"expr":"sum(sum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace, storageclass) + on (persistentvolumeclaim, namespace)\n  group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) / 1024 / 1024 / 1024 * $costStorageSSD\n  + (sum (sum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace, storageclass) + on (persistentvolumeclaim, namespace)\n  group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) / 1024 / 1024 / 1024 or on() vector(0) )* $costStorageStandard\n  + sum(node_filesystem_size_bytes{mountpoint=\"/mnt/stateful_partition\",app_mintel_com_data_source=\"$cluster\"} + $unaccountedNodeStorage) / 1024 / 1024 / 1024 * $costStorageSSD\n","format":"time_series","instant":false,"interval":"1m","intervalFactor":2,"legendFormat":"","refId":"A"}],"thresholds":"","title":"Storage Cost (Cluster and PVC)","type":"singlestat","valueFontSize":"80%","valueMaps":[],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["rgba(245, 54, 54, 0.9)","rgba(50, 172, 45, 0.97)","#c15c17"],"datasource":"$ds","decimals":2,"description":"This gauge shows current RAM use by RAM available","format":"percent","gauge":{"maxValue":100,"minValue":0,"show":true,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":4,"w":3,"x":0,"y":4},"height":200,"id":7,"interval":"1m","links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":null,"postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"sum (container_memory_working_set_bytes{id!=\"/\",service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}) / sum (machine_memory_bytes{service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}) * 100\n","format":"time_series","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"","refId":"A"}],"thresholds":"30, 80","title":"RAM Utilisation","transparent":true,"type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":true,"colors":["rgba(245, 54, 54, 0.9)","rgba(50, 172, 45, 0.97)","#c15c17"],"datasource":"$ds","decimals":2,"description":"This panel shows current RAM reservation requests by applications, vs RAM available","format":"percent","gauge":{"maxValue":100,"minValue":0,"show":true,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":4,"w":3,"x":3,"y":4},"height":200,"id":8,"interval":"1m","links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":null,"postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":false,"lineColor":"rgb(31, 120, 193)","show":false},"tableColumn":"","targets":[{"expr":"(\n  sum(kube_pod_container_resource_requests_memory_bytes{app_mintel_com_data_source=\"$cluster\"})\n    / sum(kube_node_status_allocatable_memory_bytes{app_mintel_com_data_source=\"$cluster\"})) * 100\n","format":"time_series","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"","refId":"A"}],"thresholds":"30, 80","title":"RAM Requests","transparent":true,"type":"singlestat","valueFontSize":"80%","valueMaps":[{"op":"=","text":"N/A","value":"null"}],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"$ds","decimals":2,"format":"currencyUSD","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":4,"w":4,"x":6,"y":4},"height":200,"id":9,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":null,"postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":true,"lineColor":"rgb(31, 120, 193)","show":true},"tableColumn":"","targets":[{"expr":"sum(((\n       sum(kube_node_status_capacity_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)\n        * on (node) group_left (label_cloud_google_com_gke_preemptible)\n       kube_node_labels{label_cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}\n     ) /1024/1024/1024 * $costpram)\n   or\n   ((\n       sum(kube_node_status_capacity_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)\n        * on (node) group_left (label_cloud_google_com_gke_preemptible)\n       kube_node_labels{label_cloud_google_com_gke_preemptible!=\"true\",app_mintel_com_data_source=\"$cluster\"}\n     ) /1024/1024/1024 * ($costram - ($costram / 100 * $costDiscount))))\n","format":"time_series","instant":false,"interval":"1m","intervalFactor":2,"legendFormat":"","refId":"A"}],"thresholds":"","title":"RAM Cost","type":"singlestat","valueFontSize":"80%","valueMaps":[],"valueName":"current"},{"cacheTimeout":null,"colorBackground":false,"colorValue":false,"colors":["#299c46","rgba(237, 129, 40, 0.89)","#d44a3a"],"datasource":"$ds","decimals":2,"format":"currencyUSD","gauge":{"maxValue":100,"minValue":0,"show":false,"thresholdLabels":false,"thresholdMarkers":true},"gridPos":{"h":4,"w":4,"x":10,"y":4},"height":200,"id":10,"interval":null,"links":[],"mappingType":1,"mappingTypes":[{"name":"value to text","value":1},{"name":"range to text","value":2}],"maxDataPoints":100,"nullPointMode":"connected","nullText":null,"postfix":null,"postfixFontSize":"50%","prefix":"","prefixFontSize":"50%","rangeMaps":[{"from":"null","text":"N/A","to":"null"}],"sparkline":{"fillColor":"rgba(31, 118, 189, 0.18)","full":true,"lineColor":"rgb(31, 120, 193)","show":true},"tableColumn":"","targets":[{"expr":"# CPU\nsum(((sum(kube_node_status_capacity_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node) * on (node) group_left (label_cloud_google_com_gke_preemptible)\nkube_node_labels{label_cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}) * $costpcpu)\nor ((sum(kube_node_status_capacity_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node) * on (node) group_left (label_cloud_google_com_gke_preemptible)\nkube_node_labels{label_cloud_google_com_gke_preemptible!=\"true\",app_mintel_com_data_source=\"$cluster\"}) * ($costcpu - ($costcpu / 100 * $costDiscount)))) +\n# Storage\nsum (\nsum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass)\n+ on (persistentvolumeclaim, namespace) group_right(storageclass)\nsum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace)\n) / 1024 / 1024 /1024 * $costStorageSSD +\n(sum (\nsum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass)\n+ on (persistentvolumeclaim, namespace) group_right(storageclass)\nsum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace)\n) or on() vector(0)) / 1024 / 1024 /1024 * $costStorageStandard +\nsum(node_filesystem_size_bytes{mountpoint=\"/mnt/stateful_partition\",app_mintel_com_data_source=\"$cluster\"} + $unaccountedNodeStorage) / 1024 / 1024 / 1024 * $costStorageSSD +\n# RAM\nsum(((\n    sum(kube_node_status_capacity_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)\n     * on (node) group_left (label_cloud_google_com_gke_preemptible)\n    kube_node_labels{label_cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}) /1024/1024/1024 * $costpram\n)\nor\n((\n    sum(kube_node_status_capacity_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)\n     * on (node) group_left (label_cloud_google_com_gke_preemptible)\n    kube_node_labels{label_cloud_google_com_gke_preemptible!=\"true\",app_mintel_com_data_source=\"$cluster\"}\n  ) /1024/1024/1024 * ($costram - ($costram / 100 * $costDiscount))\n))\n","format":"time_series","instant":false,"interval":"1m","intervalFactor":2,"legendFormat":"","refId":"A"}],"thresholds":"","title":"Total Cost","type":"singlestat","valueFontSize":"80%","valueMaps":[],"valueName":"current"},{"columns":[],"datasource":"$ds","description":"This table shows the comparison of CPU and RAM requests by applications, vs the capacity of the node","gridPos":{"h":8,"w":10,"x":14,"y":0},"id":11,"links":[],"styles":[{"alias":"RAM Requests","align":"auto","colorMode":"value","colors":["rgba(50, 172, 45, 0.97)","#ef843c","rgba(245, 54, 54, 0.9) "],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Value #A","thresholds":["50"," 80"],"type":"number","unit":"percent"},{"alias":"Node","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"node","thresholds":[],"type":"string","unit":"short"},{"alias":"","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Time","thresholds":[],"type":"hidden","unit":"short"},{"alias":"CPU Requests","align":"auto","colorMode":"value","colors":["rgba(50, 172, 45, 0.97)","#ef843c","rgba(245, 54, 54, 0.9)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Value #B","thresholds":["50"," 80"],"type":"number","unit":"percent"}],"targets":[{"expr":"(sum(kube_pod_container_resource_requests_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node) / sum(kube_node_status_allocatable_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)) * 100\n","format":"table","instant":"true","interval":"","intervalFactor":1,"legendFormat":"{{ node }}","refId":"A"},{"expr":"(sum(kube_pod_container_resource_requests_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node) / sum(kube_node_status_allocatable_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node)) * 100\n","format":"table","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"{{ node }}","refId":"B"}],"timeFrom":null,"timeShift":null,"title":"Cluster Node Utilisation by CPU and RAM requests","type":"table"},{"columns":[],"datasource":"$ds","description":"","gridPos":{"h":11,"w":14,"x":0,"y":8},"id":12,"links":[],"styles":[{"alias":"Namespace","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(50, 172, 45, 0.97)","#c15c17"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"link":true,"linkTooltip":"View namespace cost analysis","linkUrl":"d/c4190832ac79f23e775e70c7ddbf66a2/mintel-cost-analysis-by-namespace?var-namespace=$__cell&var-ds=$ds&var-cluster=$cluster","pattern":"namespace","thresholds":["30","80"],"type":"string","unit":"currencyUSD"},{"alias":"RAM","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"pattern":"Value #B","thresholds":[],"type":"number","unit":"currencyUSD"},{"alias":"CPU","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Value #A","thresholds":[],"type":"number","unit":"currencyUSD"},{"alias":"","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Time","thresholds":[],"type":"hidden","unit":"short"},{"alias":"Storage","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Value #C","thresholds":[],"type":"number","unit":"currencyUSD"},{"alias":"Total","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Value #D","thresholds":[],"type":"number","unit":"currencyUSD"},{"alias":"CPU Utilisation","align":"auto","colorMode":"value","colors":["rgba(50, 172, 45, 0.97)","#ef843c","#bf1b00"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Value #E","thresholds":["30","80"],"type":"number","unit":"percent"},{"alias":"RAM Utilisation","align":"auto","colorMode":"value","colors":["rgba(50, 172, 45, 0.97)","#ef843c ","rgba(245, 54, 54, 0.9) "],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Value #F","thresholds":["30","80"],"type":"number","unit":"percent"}],"targets":[{"expr":"sum(namespace:kube_pod_container_resource_requests_cpu_cores:sum{app_mintel_com_data_source=\"$cluster\"} * ($costcpu - ($costcpu / 100 * $costDiscount))) by (namespace)\n  #+(sum(container_spec_cpu_shares{namespace!=\"\",cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}/1000*$costpcpu) by (namespace)\n  #or count(count(container_spec_cpu_shares{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n","format":"table","instant":"true","interval":"","intervalFactor":1,"legendFormat":"{{ namespace }}","refId":"A"},{"expr":"sum(namespace:kube_pod_container_resource_requests_memory_bytes:sum{app_mintel_com_data_source=\"$cluster\"}/1024/1024/1024*($costram- ($costram\n  / 100 * $costDiscount))) by (namespace)\n  #+(sum(container_spec_memory_limit_bytes{namespace!=\"\",cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}/1024/1024/1024*$costpram)\n  #by (namespace) or count(count(container_spec_memory_limit_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n","format":"table","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"{{ namespace }}","refId":"B"},{"expr":"sum (sum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass) +\n  on (persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace) / 1024 / 1024 / 1024 * $costStorageSSD\n  or sum (sum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace, storageclass) + on (persistentvolumeclaim, namespace) group_right(storageclass)\n  sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace))\n  by (namespace) / 1024 / 1024 / 1024 * $costStorageStandard or count(count(container_spec_cpu_shares{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1\n","format":"table","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"{{ namespace }}","refId":"C"},{"expr":"# Add the CPU\n  sum(namespace:kube_pod_container_resource_requests_cpu_cores:sum{app_mintel_com_data_source=\"$cluster\"} * ($costcpu - ($costcpu / 100 * $costDiscount))) by (namespace)\n  #+ (sum(container_spec_cpu_shares{namespace!=\"\",cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}/1000*$costpcpu)\n  #by (namespace) or count(count(container_spec_cpu_shares{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n  +\n  # Add the RAM\n  sum(namespace:kube_pod_container_resource_requests_memory_bytes:sum{app_mintel_com_data_source=\"$cluster\"}/1024/1024/1024*($costram- ($costram / 100 * $costDiscount))) by (namespace)\n  #+ (sum(container_spec_memory_limit_bytes{namespace!=\"\",cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}/1024/1024/1024*$costpram)\n  #by (namespace) or count(count(container_spec_memory_limit_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n  +\n  # Add the storage\n  (sum (sum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass)\n  + on (persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace) / 1024 / 1024 / 1024 * $costStorageSSD\n  or sum (sum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass) +\n  on (persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace) / 1024 / 1024 / 1024 * $costStorageStandard\n  or count(count(container_spec_cpu_shares{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n","format":"table","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"{{ namespace }}","refId":"D"},{"expr":"(sum by (namespace) (rate(container_cpu_usage_seconds_total{container!=\"\",image!=\"\",service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}[$__interval]))\n  /  ignoring(namespace) group_left() (sum (kube_node_status_allocatable_cpu_cores{app_mintel_com_data_source=\"$cluster\"})) ) * 100\n","format":"table","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"{{ namespace }}","refId":"E"},{"expr":"sum(count(count(container_memory_working_set_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (pod, namespace)) by (pod, namespace) *\n  on (pod, namespace) sum(avg_over_time(container_memory_working_set_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}[$__interval]))\n  by (pod, namespace)) by (namespace) / sum(container_spec_memory_limit_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace) * 100\n","format":"table","instant":true,"interval":"1m","intervalFactor":1,"legendFormat":"{{ namespace }}","refId":"F"}],"timeFrom":null,"timeShift":null,"title":"Namespace cost and utilisation analysis","type":"table"},{"columns":[],"datasource":"$ds","description":"","gridPos":{"h":11,"w":10,"x":14,"y":8},"id":13,"links":[],"styles":[{"alias":"Namespace","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"namespace","thresholds":[],"type":"string","unit":"short"},{"alias":"PVC Name","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"persistentvolumeclaim","thresholds":[],"type":"number","unit":"short"},{"alias":"Storage Class","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"storageclass","thresholds":[],"type":"number","unit":"short"},{"alias":"Cost","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Value","thresholds":[],"type":"number","unit":"currencyUSD"},{"alias":"","align":"auto","colorMode":null,"colors":["rgba(245, 54, 54, 0.9)","rgba(237, 129, 40, 0.89)","rgba(50, 172, 45, 0.97)"],"dateFormat":"YYYY-MM-DD HH:mm:ss","decimals":2,"mappingType":1,"pattern":"Time","thresholds":[],"type":"hidden","unit":"short"}],"targets":[{"expr":"sum (sum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass) +\n  on(persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace,persistentvolumeclaim,storageclass) / 1024 / 1024 / 1024 * $costStorageSSD\n  or sum (sum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass) +\n  on(persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace,persistentvolumeclaim,storageclass) / 1024 / 1024 / 1024 * $costStorageStandard\n","format":"table","instant":"true","interval":"","intervalFactor":1,"legendFormat":"{{ persistentvolumeclaim }}","refId":"A"}],"timeFrom":null,"timeShift":null,"title":"Persistent Volume Claims","type":"table"}],"refresh":"","rows":[],"schemaVersion":14,"style":"dark","tags":["mintel","cost","utilisation","metrics"],"templating":{"list":[{"current":{"text":"cortex-satoshi-prod","value":"cortex-satoshi-prod"},"hide":0,"label":"datasource","name":"ds","options":[],"query":"prometheus","refresh":1,"regex":"/(cortex-satoshi.*|Prometheus)/","type":"datasource"},{"allValue":null,"current":{},"datasource":"$ds","hide":0,"includeAll":false,"label":null,"multi":false,"name":"cluster","options":[],"query":"label_values(app_mintel_com_data_source)","refresh":1,"regex":"","sort":1,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false},{"allValue":null,"current":{"text":"17.76","value":"17.76"},"hide":2,"includeAll":false,"label":"CPU","multi":false,"name":"costcpu","options":[{"text":"17.76","value":"17.76"}],"query":"17.76","refresh":0,"type":"custom"},{"allValue":null,"current":{"text":"5.34","value":"5.34"},"hide":2,"includeAll":false,"label":"PE CPU","multi":false,"name":"costpcpu","options":[{"text":"5.34","value":"5.34"}],"query":"5.34","refresh":0,"type":"custom"},{"allValue":null,"current":{"text":"2.38","value":"2.38"},"hide":2,"includeAll":false,"label":"RAM","multi":false,"name":"costram","options":[{"text":"2.38","value":"2.38"}],"query":"2.38","refresh":0,"type":"custom"},{"allValue":null,"current":{"text":"0.71","value":"0.71"},"hide":2,"includeAll":false,"label":"PE RAM","multi":false,"name":"costpram","options":[{"text":"0.71","value":"0.71"}],"query":"0.71","refresh":0,"type":"custom"},{"allValue":null,"current":{"text":"0.040","value":"0.040"},"hide":2,"includeAll":false,"label":"Storage","multi":false,"name":"costStorageStandard","options":[{"text":"0.040","value":"0.040"}],"query":"0.040","refresh":0,"type":"custom"},{"allValue":null,"current":{"text":"0.170","value":"0.170"},"hide":2,"includeAll":false,"label":"SSD","multi":false,"name":"costStorageSSD","options":[{"text":"0.170","value":"0.170"}],"query":"0.170","refresh":0,"type":"custom"},{"allValue":null,"current":{"text":"30","value":"30"},"hide":2,"includeAll":false,"label":"Disc.","multi":false,"name":"costDiscount","options":[{"text":"30","value":"30"}],"query":"30","refresh":0,"type":"custom"},{"allValue":null,"current":{"text":"4000000000","value":"4000000000"},"hide":2,"includeAll":false,"label":"NS","multi":false,"name":"unaccountedNodeStorage","options":[{"text":"4000000000","value":"4000000000"}],"query":"4000000000","refresh":0,"type":"custom"}]},"time":{"from":"now-7d","to":"now"},"timepicker":{"refresh_intervals":["5s","10s","30s","1m","5m","15m","30m","1h","2h","1d"],"time_options":["5m","15m","1h","6h","12h","24h","2d","7d","30d"]},"timezone":"browser","title":"Mintel /  Cost Analysis by Cluster","uid":"a887345482b1ffc28fb7dbbe325cd30e","version":0}
+{
+  "__inputs": [],
+  "__requires": [],
+  "annotations": {
+    "list": []
+  },
+  "description": "Provides an analysis of costs by cluster",
+  "editable": "false",
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "content": "This dashboard shows indicative monthly costing for the cluster, based on current requests for CPU, RAM and Storage.\nCurrent Region Prices are for BELGIUM.\n",
+      "datasource": null,
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "mode": "markdown",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(50, 172, 45, 0.97)",
+        "#c15c17"
+      ],
+      "datasource": "$ds",
+      "decimals": 2,
+      "description": "This gauge shows the current CPU use vs CPU available",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 0
+      },
+      "height": 200,
+      "id": 3,
+      "interval": "1m",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": null,
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum (rate (container_cpu_usage_seconds_total{id!=\"/\",service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}[$__interval])) / sum (machine_cpu_cores{service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}) * 100\n",
+          "format": "time_series",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "30, 80",
+      "title": "CPU Utilisation",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(50, 172, 45, 0.97)",
+        "#c15c17"
+      ],
+      "datasource": "$ds",
+      "decimals": 2,
+      "description": "This panel shows current CPU reservation requests by applications, vs CPU available",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 3,
+        "y": 0
+      },
+      "height": 200,
+      "id": 4,
+      "interval": "1m",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": null,
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "(sum(kube_pod_container_resource_requests_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) / sum (kube_node_status_allocatable_cpu_cores{app_mintel_com_data_source=\"$cluster\"})) * 100\n",
+          "format": "time_series",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "30, 80",
+      "title": "CPU Requests",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$ds",
+      "decimals": 2,
+      "format": "currencyUSD",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 6,
+        "y": 0
+      },
+      "height": 200,
+      "id": 5,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": null,
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": true,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(((sum(kube_node_status_capacity_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node)\n  * on (node) group_left (label_cloud_google_com_gke_preemptible) kube_node_labels{label_cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"})\n  * $costpcpu) or ((sum(kube_node_status_capacity_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node)\n  * on (node) group_left (label_cloud_google_com_gke_preemptible) kube_node_labels{label_cloud_google_com_gke_preemptible!=\"true\",app_mintel_com_data_source=\"$cluster\"})\n  * ($costcpu - ($costcpu / 100 * $costDiscount))))\n",
+          "format": "time_series",
+          "instant": false,
+          "interval": "1m",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "CPU Cost",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$ds",
+      "decimals": 2,
+      "format": "currencyUSD",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 10,
+        "y": 0
+      },
+      "height": 200,
+      "id": 6,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": null,
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": true,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(sum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace, storageclass) + on (persistentvolumeclaim, namespace)\n  group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) / 1024 / 1024 / 1024 * $costStorageSSD\n  + (sum (sum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace, storageclass) + on (persistentvolumeclaim, namespace)\n  group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) / 1024 / 1024 / 1024 or on() vector(0) )* $costStorageStandard\n  + sum(node_filesystem_size_bytes{mountpoint=\"/mnt/stateful_partition\",app_mintel_com_data_source=\"$cluster\"} + $unaccountedNodeStorage) / 1024 / 1024 / 1024 * $costStorageSSD\n",
+          "format": "time_series",
+          "instant": false,
+          "interval": "1m",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "Storage Cost (Cluster and PVC)",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(50, 172, 45, 0.97)",
+        "#c15c17"
+      ],
+      "datasource": "$ds",
+      "decimals": 2,
+      "description": "This gauge shows current RAM use by RAM available",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 4
+      },
+      "height": 200,
+      "id": 7,
+      "interval": "1m",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": null,
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum (container_memory_working_set_bytes{id!=\"/\",service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}) / sum (machine_memory_bytes{service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}) * 100\n",
+          "format": "time_series",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "30, 80",
+      "title": "RAM Utilisation",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(50, 172, 45, 0.97)",
+        "#c15c17"
+      ],
+      "datasource": "$ds",
+      "decimals": 2,
+      "description": "This panel shows current RAM reservation requests by applications, vs RAM available",
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 3,
+        "y": 4
+      },
+      "height": 200,
+      "id": 8,
+      "interval": "1m",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": null,
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "(\n  sum(kube_pod_container_resource_requests_memory_bytes{app_mintel_com_data_source=\"$cluster\"})\n    / sum(kube_node_status_allocatable_memory_bytes{app_mintel_com_data_source=\"$cluster\"})) * 100\n",
+          "format": "time_series",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "30, 80",
+      "title": "RAM Requests",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$ds",
+      "decimals": 2,
+      "format": "currencyUSD",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 6,
+        "y": 4
+      },
+      "height": 200,
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": null,
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": true,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(((\n       sum(kube_node_status_capacity_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)\n        * on (node) group_left (label_cloud_google_com_gke_preemptible)\n       kube_node_labels{label_cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}\n     ) /1024/1024/1024 * $costpram)\n   or\n   ((\n       sum(kube_node_status_capacity_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)\n        * on (node) group_left (label_cloud_google_com_gke_preemptible)\n       kube_node_labels{label_cloud_google_com_gke_preemptible!=\"true\",app_mintel_com_data_source=\"$cluster\"}\n     ) /1024/1024/1024 * ($costram - ($costram / 100 * $costDiscount))))\n",
+          "format": "time_series",
+          "instant": false,
+          "interval": "1m",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "RAM Cost",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$ds",
+      "decimals": 2,
+      "format": "currencyUSD",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 10,
+        "y": 4
+      },
+      "height": 200,
+      "id": 10,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": null,
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": true,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "# CPU\nsum(((sum(kube_node_status_capacity_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node) * on (node) group_left (label_cloud_google_com_gke_preemptible)\nkube_node_labels{label_cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}) * $costpcpu)\nor ((sum(kube_node_status_capacity_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node) * on (node) group_left (label_cloud_google_com_gke_preemptible)\nkube_node_labels{label_cloud_google_com_gke_preemptible!=\"true\",app_mintel_com_data_source=\"$cluster\"}) * ($costcpu - ($costcpu / 100 * $costDiscount)))) +\n# Storage\nsum (\nsum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass)\n+ on (persistentvolumeclaim, namespace) group_right(storageclass)\nsum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace)\n) / 1024 / 1024 /1024 * $costStorageSSD +\n(sum (\nsum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass)\n+ on (persistentvolumeclaim, namespace) group_right(storageclass)\nsum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace)\n) or on() vector(0)) / 1024 / 1024 /1024 * $costStorageStandard +\nsum(node_filesystem_size_bytes{mountpoint=\"/mnt/stateful_partition\",app_mintel_com_data_source=\"$cluster\"} + $unaccountedNodeStorage) / 1024 / 1024 / 1024 * $costStorageSSD +\n# RAM\nsum(((\n    sum(kube_node_status_capacity_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)\n     * on (node) group_left (label_cloud_google_com_gke_preemptible)\n    kube_node_labels{label_cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}) /1024/1024/1024 * $costpram\n)\nor\n((\n    sum(kube_node_status_capacity_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)\n     * on (node) group_left (label_cloud_google_com_gke_preemptible)\n    kube_node_labels{label_cloud_google_com_gke_preemptible!=\"true\",app_mintel_com_data_source=\"$cluster\"}\n  ) /1024/1024/1024 * ($costram - ($costram / 100 * $costDiscount))\n))\n",
+          "format": "time_series",
+          "instant": false,
+          "interval": "1m",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "Total Cost",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "columns": [],
+      "datasource": "$ds",
+      "description": "This table shows the comparison of CPU and RAM requests by applications, vs the capacity of the node",
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 14,
+        "y": 0
+      },
+      "id": 11,
+      "links": [],
+      "styles": [
+        {
+          "alias": "RAM Requests",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "#ef843c",
+            "rgba(245, 54, 54, 0.9) "
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #A",
+          "thresholds": [
+            "50",
+            " 80"
+          ],
+          "type": "number",
+          "unit": "percent"
+        },
+        {
+          "alias": "Node",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "node",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Time",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "CPU Requests",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "#ef843c",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #B",
+          "thresholds": [
+            "50",
+            " 80"
+          ],
+          "type": "number",
+          "unit": "percent"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "(sum(kube_pod_container_resource_requests_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node) / sum(kube_node_status_allocatable_memory_bytes{app_mintel_com_data_source=\"$cluster\"}) by (node)) * 100\n",
+          "format": "table",
+          "instant": "true",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ node }}",
+          "refId": "A"
+        },
+        {
+          "expr": "(sum(kube_pod_container_resource_requests_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node) / sum(kube_node_status_allocatable_cpu_cores{app_mintel_com_data_source=\"$cluster\"}) by (node)) * 100\n",
+          "format": "table",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "{{ node }}",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Cluster Node Utilisation by CPU and RAM requests",
+      "type": "table"
+    },
+    {
+      "columns": [],
+      "datasource": "$ds",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 14,
+        "x": 0,
+        "y": 8
+      },
+      "id": 12,
+      "links": [],
+      "styles": [
+        {
+          "alias": "Namespace",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(50, 172, 45, 0.97)",
+            "#c15c17"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": true,
+          "linkTooltip": "View namespace cost analysis",
+          "linkUrl": "d/c4190832ac79f23e775e70c7ddbf66a2/mintel-cost-analysis-by-namespace?var-namespace=$__cell\u0026var-ds=$ds\u0026var-cluster=$cluster",
+          "pattern": "namespace",
+          "thresholds": [
+            "30",
+            "80"
+          ],
+          "type": "string",
+          "unit": "currencyUSD"
+        },
+        {
+          "alias": "RAM",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "pattern": "Value #B",
+          "thresholds": [],
+          "type": "number",
+          "unit": "currencyUSD"
+        },
+        {
+          "alias": "CPU",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #A",
+          "thresholds": [],
+          "type": "number",
+          "unit": "currencyUSD"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Time",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "Storage",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #C",
+          "thresholds": [],
+          "type": "number",
+          "unit": "currencyUSD"
+        },
+        {
+          "alias": "Total",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #D",
+          "thresholds": [],
+          "type": "number",
+          "unit": "currencyUSD"
+        },
+        {
+          "alias": "CPU Utilisation",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "#ef843c",
+            "#bf1b00"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #E",
+          "thresholds": [
+            "30",
+            "80"
+          ],
+          "type": "number",
+          "unit": "percent"
+        },
+        {
+          "alias": "RAM Utilisation",
+          "align": "auto",
+          "colorMode": "value",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "#ef843c ",
+            "rgba(245, 54, 54, 0.9) "
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #F",
+          "thresholds": [
+            "30",
+            "80"
+          ],
+          "type": "number",
+          "unit": "percent"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sum(namespace:kube_pod_container_resource_requests_cpu_cores:sum{app_mintel_com_data_source=\"$cluster\"} * ($costcpu - ($costcpu / 100 * $costDiscount))) by (namespace)\n  #+(sum(container_spec_cpu_shares{namespace!=\"\",cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}/1000*$costpcpu) by (namespace)\n  #or count(count(container_spec_cpu_shares{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n",
+          "format": "table",
+          "instant": "true",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ namespace }}",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(namespace:kube_pod_container_resource_requests_memory_bytes:sum{app_mintel_com_data_source=\"$cluster\"}/1024/1024/1024*($costram- ($costram\n  / 100 * $costDiscount))) by (namespace)\n  #+(sum(container_spec_memory_limit_bytes{namespace!=\"\",cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}/1024/1024/1024*$costpram)\n  #by (namespace) or count(count(container_spec_memory_limit_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n",
+          "format": "table",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "{{ namespace }}",
+          "refId": "B"
+        },
+        {
+          "expr": "sum (sum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass) +\n  on (persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace) / 1024 / 1024 / 1024 * $costStorageSSD\n  or sum (sum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace, storageclass) + on (persistentvolumeclaim, namespace) group_right(storageclass)\n  sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace))\n  by (namespace) / 1024 / 1024 / 1024 * $costStorageStandard or count(count(container_spec_cpu_shares{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1\n",
+          "format": "table",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "{{ namespace }}",
+          "refId": "C"
+        },
+        {
+          "expr": "# Add the CPU\n  sum(namespace:kube_pod_container_resource_requests_cpu_cores:sum{app_mintel_com_data_source=\"$cluster\"} * ($costcpu - ($costcpu / 100 * $costDiscount))) by (namespace)\n  #+ (sum(container_spec_cpu_shares{namespace!=\"\",cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}/1000*$costpcpu)\n  #by (namespace) or count(count(container_spec_cpu_shares{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n  +\n  # Add the RAM\n  sum(namespace:kube_pod_container_resource_requests_memory_bytes:sum{app_mintel_com_data_source=\"$cluster\"}/1024/1024/1024*($costram- ($costram / 100 * $costDiscount))) by (namespace)\n  #+ (sum(container_spec_memory_limit_bytes{namespace!=\"\",cloud_google_com_gke_preemptible=\"true\",app_mintel_com_data_source=\"$cluster\"}/1024/1024/1024*$costpram)\n  #by (namespace) or count(count(container_spec_memory_limit_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n  +\n  # Add the storage\n  (sum (sum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass)\n  + on (persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace) / 1024 / 1024 / 1024 * $costStorageSSD\n  or sum (sum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass) +\n  on (persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace) / 1024 / 1024 / 1024 * $costStorageStandard\n  or count(count(container_spec_cpu_shares{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace)) by (namespace) -1)\n",
+          "format": "table",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "{{ namespace }}",
+          "refId": "D"
+        },
+        {
+          "expr": "(sum by (namespace) (rate(container_cpu_usage_seconds_total{container!=\"\",image!=\"\",service=\"kubelet\",app_mintel_com_data_source=\"$cluster\"}[$__interval]))\n  /  ignoring(namespace) group_left() (sum (kube_node_status_allocatable_cpu_cores{app_mintel_com_data_source=\"$cluster\"})) ) * 100\n",
+          "format": "table",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "{{ namespace }}",
+          "refId": "E"
+        },
+        {
+          "expr": "sum(count(count(container_memory_working_set_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (pod, namespace)) by (pod, namespace) *\n  on (pod, namespace) sum(avg_over_time(container_memory_working_set_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}[$__interval]))\n  by (pod, namespace)) by (namespace) / sum(container_spec_memory_limit_bytes{namespace!=\"\",app_mintel_com_data_source=\"$cluster\"}) by (namespace) * 100\n",
+          "format": "table",
+          "instant": true,
+          "interval": "1m",
+          "intervalFactor": 1,
+          "legendFormat": "{{ namespace }}",
+          "refId": "F"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Namespace cost and utilisation analysis",
+      "type": "table"
+    },
+    {
+      "columns": [],
+      "datasource": "$ds",
+      "description": "",
+      "gridPos": {
+        "h": 11,
+        "w": 10,
+        "x": 14,
+        "y": 8
+      },
+      "id": 13,
+      "links": [],
+      "styles": [
+        {
+          "alias": "Namespace",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "namespace",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "PVC Name",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "persistentvolumeclaim",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Storage Class",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "storageclass",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Cost",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [],
+          "type": "number",
+          "unit": "currencyUSD"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Time",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sum (sum(kube_persistentvolumeclaim_info{storageclass=~\".*ssd.*|fast\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass) +\n  on(persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace,persistentvolumeclaim,storageclass) / 1024 / 1024 / 1024 * $costStorageSSD\n  or sum (sum(kube_persistentvolumeclaim_info{storageclass!~\".*ssd.*\",app_mintel_com_data_source=\"$cluster\"}) by (persistentvolumeclaim, namespace, storageclass) +\n  on(persistentvolumeclaim, namespace) group_right(storageclass) sum(kube_persistentvolumeclaim_resource_requests_storage_bytes{app_mintel_com_data_source=\"$cluster\"})\n  by (persistentvolumeclaim, namespace)) by (namespace,persistentvolumeclaim,storageclass) / 1024 / 1024 / 1024 * $costStorageStandard\n",
+          "format": "table",
+          "instant": "true",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ persistentvolumeclaim }}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Persistent Volume Claims",
+      "type": "table"
+    }
+  ],
+  "refresh": "",
+  "rows": [],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [
+    "mintel",
+    "cost",
+    "utilisation",
+    "metrics"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "cortex-satoshi-prod",
+          "value": "cortex-satoshi-prod"
+        },
+        "hide": 0,
+        "label": "datasource",
+        "name": "ds",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "/(cortex-satoshi.*|Prometheus)/",
+        "type": "datasource"
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$ds",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": "label_values(app_mintel_com_data_source)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "17.76",
+          "value": "17.76"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "CPU",
+        "multi": false,
+        "name": "costcpu",
+        "options": [
+          {
+            "text": "17.76",
+            "value": "17.76"
+          }
+        ],
+        "query": "17.76",
+        "refresh": 0,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "5.34",
+          "value": "5.34"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "PE CPU",
+        "multi": false,
+        "name": "costpcpu",
+        "options": [
+          {
+            "text": "5.34",
+            "value": "5.34"
+          }
+        ],
+        "query": "5.34",
+        "refresh": 0,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "2.38",
+          "value": "2.38"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "RAM",
+        "multi": false,
+        "name": "costram",
+        "options": [
+          {
+            "text": "2.38",
+            "value": "2.38"
+          }
+        ],
+        "query": "2.38",
+        "refresh": 0,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "0.71",
+          "value": "0.71"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "PE RAM",
+        "multi": false,
+        "name": "costpram",
+        "options": [
+          {
+            "text": "0.71",
+            "value": "0.71"
+          }
+        ],
+        "query": "0.71",
+        "refresh": 0,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "0.040",
+          "value": "0.040"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "Storage",
+        "multi": false,
+        "name": "costStorageStandard",
+        "options": [
+          {
+            "text": "0.040",
+            "value": "0.040"
+          }
+        ],
+        "query": "0.040",
+        "refresh": 0,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "0.170",
+          "value": "0.170"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "SSD",
+        "multi": false,
+        "name": "costStorageSSD",
+        "options": [
+          {
+            "text": "0.170",
+            "value": "0.170"
+          }
+        ],
+        "query": "0.170",
+        "refresh": 0,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "30",
+          "value": "30"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "Disc.",
+        "multi": false,
+        "name": "costDiscount",
+        "options": [
+          {
+            "text": "30",
+            "value": "30"
+          }
+        ],
+        "query": "30",
+        "refresh": 0,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "4000000000",
+          "value": "4000000000"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "NS",
+        "multi": false,
+        "name": "unaccountedNodeStorage",
+        "options": [
+          {
+            "text": "4000000000",
+            "value": "4000000000"
+          }
+        ],
+        "query": "4000000000",
+        "refresh": 0,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Mintel /  Cost Analysis by Cluster",
+  "uid": "a887345482b1ffc28fb7dbbe325cd30e",
+  "version": 0
+}

@@ -1,1 +1,170 @@
-{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations & Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":0,"id":108,"iteration":1615279205446,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{}},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":16,"w":24,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"cfwConnectionStatValue{cfwConnectionStatType=\"currentInUse\",instance=~\"$instance\"}","interval":"","legendFormat":"Current - $instance","refId":"A"},{"expr":"cfwConnectionStatValue{cfwConnectionStatType=\"high\",instance=~\"$instance\"}","interval":"","legendFormat":"Limit - $instance","refId":"B"}],"thresholds":[],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Firewall Connections","tooltip":{"shared":true,"sort":0,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:59","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true},{"$$hashKey":"object:60","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"refresh":"30s","schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[{"allValue":null,"current":{"selected":false,"text":"All","value":"$__all"},"datasource":"cortex-onprem-prod","definition":"label_values(cfwConnectionStatValue, instance)","error":null,"hide":0,"includeAll":true,"label":"Instance","multi":false,"name":"instance","options":[],"query":"label_values(cfwConnectionStatValue, instance)","refresh":2,"regex":"","skipUrlSync":false,"sort":0,"tagValuesQuery":"","tags":[],"tagsQuery":"","type":"query","useTags":false}]},"time":{"from":"now-24h","to":"now"},"timepicker":{},"timezone":"","title":"Cisco Firepower - Firewall Connections","uid":"c6f1c6f9b200d17f5cd188c3e2d6749b","version":4}
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations \u0026 Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 108,
+  "iteration": 1615279205446,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 16,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "cfwConnectionStatValue{cfwConnectionStatType=\"currentInUse\",instance=~\"$instance\"}",
+          "interval": "",
+          "legendFormat": "Current - $instance",
+          "refId": "A"
+        },
+        {
+          "expr": "cfwConnectionStatValue{cfwConnectionStatType=\"high\",instance=~\"$instance\"}",
+          "interval": "",
+          "legendFormat": "Limit - $instance",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Firewall Connections",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:59",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:60",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "cortex-onprem-prod",
+        "definition": "label_values(cfwConnectionStatValue, instance)",
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "Instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": "label_values(cfwConnectionStatValue, instance)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Cisco Firepower - Firewall Connections",
+  "uid": "c6f1c6f9b200d17f5cd188c3e2d6749b",
+  "version": 4
+}

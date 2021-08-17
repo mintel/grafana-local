@@ -1,1 +1,1581 @@
-{"annotations":{"list":[{"builtIn":1,"datasource":"-- Grafana --","enable":true,"hide":true,"iconColor":"rgba(0, 211, 255, 1)","name":"Annotations & Alerts","type":"dashboard"}]},"editable":true,"gnetId":null,"graphTooltip":1,"id":83,"links":[],"panels":[{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":0,"y":0},"hiddenSeries":false,"id":2,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"core2-vlan2.shanghai.mintel.ad\",ifName=\"B1\"}[5m])) * 8","interval":"","legendFormat":"China Telecom - Out","refId":"B"},{"expr":"sum(rate(ifInOctets{instance=\"core2-vlan2.shanghai.mintel.ad\",ifName=\"B1\"}[5m])) * 8","interval":"","legendFormat":"China Telecom - In","refId":"A"}],"thresholds":[{"$$hashKey":"object:245","colorMode":"critical","fill":true,"line":true,"op":"gt","value":31457280,"yaxis":"left"},{"$$hashKey":"object:873","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-31457280,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Shanghai","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":null,"format":"bps","label":null,"logBase":1,"max":"41943040","min":"-41943040","show":true},{"$$hashKey":"object:174","format":"short","label":"","logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":12,"y":0},"hiddenSeries":false,"id":9,"interval":"2m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[{"$$hashKey":"object:154","alias":"Prometheus Output","fill":0,"linewidth":2}],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"core3-vlan2.shanghai.mintel.ad\",ifName=\"B2\"}[5m])) * 8","interval":"","legendFormat":"Zayo - Out","refId":"C"},{"expr":"sum(rate(ifInOctets{instance=\"core3-vlan2.shanghai.mintel.ad\",ifName=\"B2\"}[5m])) * 8","interval":"","legendFormat":"Zayo - In","refId":"D"}],"thresholds":[{"$$hashKey":"object:245","colorMode":"critical","fill":true,"line":true,"op":"gt","value":31457280,"yaxis":"left"},{"$$hashKey":"object:873","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-31457280,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Shanghai","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":null,"format":"bps","label":null,"logBase":1,"max":"41943040","min":"-41943040","show":true},{"$$hashKey":"object:174","format":"short","label":"","logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":0,"y":7},"hiddenSeries":false,"id":4,"interval":"2m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[{"$$hashKey":"object:319","alias":"Prometheus Output","fill":0,"linewidth":2}],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum (rate(ifOutOctets{instance=~\"chi-dc-edge0.*.chi-dc.mintel.ad\",ifName=\"eth0\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"GTT - Out","refId":"B"},{"expr":"sum (rate(ifInOctets{instance=~\"chi-dc-edge0.*.chi-dc.mintel.ad\",ifName=\"eth0\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"GTT - In","refId":"A"}],"thresholds":[{"$$hashKey":"object:218","colorMode":"critical","fill":true,"line":true,"op":"gt","value":209715200,"yaxis":"left"},{"$$hashKey":"object:951","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-209715200,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Chi-DC","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":null,"format":"bps","label":null,"logBase":1,"max":"262144000","min":"-262144000","show":true},{"$$hashKey":"object:174","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":12,"y":7},"hiddenSeries":false,"id":6,"interval":"2m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[{"$$hashKey":"object:194","alias":"Prometheus Output","fill":0,"linewidth":2}],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"vlan4-lon-ef-core2.lon-dc.mintel.ad\",ifName=\"1/48\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Exponential-E - Out","refId":"B"},{"expr":"sum(rate(ifInOctets{instance=\"vlan4-lon-ef-core2.lon-dc.mintel.ad\",ifName=\"1/48\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Exponential-E - In","refId":"A"}],"thresholds":[{"$$hashKey":"object:218","colorMode":"critical","fill":true,"line":true,"op":"gt","value":419430400,"yaxis":"left"},{"$$hashKey":"object:1029","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-419430400,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Lon-DC","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":-3,"format":"bps","label":null,"logBase":1,"max":"471859200","min":"-471859200","show":true},{"$$hashKey":"object:174","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":0,"y":14},"hiddenSeries":false,"id":5,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"vlan40.core4.chicago.mintel.ad\",ifName=\"B24\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Zayo - Out","refId":"B"},{"expr":"sum(rate(ifInOctets{instance=\"vlan40.core4.chicago.mintel.ad\",ifName=\"B24\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Zayo - In","refId":"C"}],"thresholds":[{"$$hashKey":"object:218","colorMode":"critical","fill":true,"line":true,"op":"gt","value":209715200,"yaxis":"left"},{"$$hashKey":"object:990","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-209715200,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Chicago","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":null,"format":"bps","label":null,"logBase":1,"max":"262144000","min":"-262144000","show":true},{"$$hashKey":"object:174","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":12,"y":14},"hiddenSeries":false,"id":10,"interval":"2m","legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[{"$$hashKey":"object:271","alias":"Prometheus Output","fill":0,"linewidth":2}],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"vlan40.core3.chicago.mintel.ad\",ifName=\"B23\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Cogent - Out","refId":"A"},{"expr":"sum(rate(ifInOctets{instance=\"vlan40.core3.chicago.mintel.ad\",ifName=\"B23\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Cogent - In","refId":"D"}],"thresholds":[{"$$hashKey":"object:218","colorMode":"critical","fill":true,"line":true,"op":"gt","value":209715200,"yaxis":"left"},{"$$hashKey":"object:990","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-209715200,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Chicago","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":null,"format":"bps","label":null,"logBase":1,"max":"262144000","min":"-262144000","show":true},{"$$hashKey":"object:174","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":0,"y":21},"hiddenSeries":false,"id":8,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"sg-off-core1.apac.mintel.ad\",ifName=\"A1\"}[5m])) * 8","interval":"","legendFormat":"StarHub / NGN SWE - Out","refId":"B"},{"expr":"sum(rate(ifInOctets{instance=\"sg-off-core1.apac.mintel.ad\",ifName=\"A1\"}[5m])) * 8","interval":"","legendFormat":"StarHub / NGN SWE - In","refId":"A"}],"thresholds":[{"$$hashKey":"object:245","colorMode":"critical","fill":true,"line":true,"op":"gt","value":52428800,"yaxis":"left"},{"$$hashKey":"object:912","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-52428800,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Singapore","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":null,"format":"bps","label":null,"logBase":1,"max":"57671680","min":"-57671680","show":true},{"$$hashKey":"object:174","format":"short","label":"","logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":12,"y":21},"hiddenSeries":false,"id":11,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"sg-off-core2.apac.mintel.ad\",ifName=\"A1\"}[5m])) * 8","interval":"","legendFormat":"Citic Telecom (Pacific) - Out","refId":"C"},{"expr":"sum(rate(ifInOctets{instance=\"sg-off-core2.apac.mintel.ad\",ifName=\"A1\"}[5m])) * 8","interval":"","legendFormat":"Citic Telecom (Pacific) - In","refId":"D"}],"thresholds":[{"$$hashKey":"object:245","colorMode":"critical","fill":true,"line":true,"op":"gt","value":31457280,"yaxis":"left"},{"$$hashKey":"object:912","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-31457280,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Singapore","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":null,"format":"bps","label":null,"logBase":1,"max":"36700160","min":"-36700160","show":true},{"$$hashKey":"object:174","format":"short","label":"","logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":0,"y":28},"hiddenSeries":false,"id":3,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"sunway.apac.mintel.ad\", ifName=\"Gi0.101\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Time - Out","refId":"B"},{"expr":"sum(rate(ifInOctets{instance=\"sunway.apac.mintel.ad\", ifName=\"Gi0.101\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Time - In","refId":"A"}],"thresholds":[{"$$hashKey":"object:218","colorMode":"critical","fill":true,"line":true,"op":"gt","value":10485760,"yaxis":"left"},{"$$hashKey":"object:1107","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-10485760,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Kuala Lumpur","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","format":"bps","label":null,"logBase":1,"max":"10485760","min":"-10485760","show":true},{"$$hashKey":"object:174","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":12,"y":28},"hiddenSeries":false,"id":12,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"sunway.apac.mintel.ad\", ifName=\"Gi0.500\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"UniFi - Out","refId":"C"},{"expr":"sum(rate(ifInOctets{instance=\"sunway.apac.mintel.ad\", ifName=\"Gi0.500\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"UniFi - In","refId":"D"}],"thresholds":[{"$$hashKey":"object:218","colorMode":"critical","fill":true,"line":true,"op":"gt","value":10485760,"yaxis":"left"},{"$$hashKey":"object:1107","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-10485760,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"Kuala Lumpur","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","format":"bps","label":null,"logBase":1,"max":"10485760","min":"-10485760","show":true},{"$$hashKey":"object:174","format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":0,"y":35},"hiddenSeries":false,"id":13,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"lon-mh-core5.london.mintel.ad\",ifName=\"A3\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Exponential-E - Out","refId":"B"},{"expr":"sum(rate(ifInOctets{instance=\"lon-mh-core5.london.mintel.ad\",ifName=\"A3\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Exponential-E - In","refId":"C"}],"thresholds":[{"$$hashKey":"object:218","colorMode":"critical","fill":true,"line":true,"op":"gt","value":419430400,"yaxis":"left"},{"$$hashKey":"object:1068","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-419430400,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"London - Mintel House","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","decimals":null,"format":"bps","label":null,"logBase":1,"max":"471859200","min":"-471859200","show":true},{"$$hashKey":"object:174","decimals":null,"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}},{"aliasColors":{},"bars":false,"dashLength":10,"dashes":false,"datasource":"cortex-onprem-prod","description":"","fieldConfig":{"defaults":{"custom":{},"links":[]},"overrides":[]},"fill":1,"fillGradient":0,"gridPos":{"h":7,"w":12,"x":12,"y":35},"hiddenSeries":false,"id":7,"legend":{"avg":false,"current":false,"max":false,"min":false,"show":true,"total":false,"values":false},"lines":true,"linewidth":1,"nullPointMode":"null","options":{"alertThreshold":true},"percentage":false,"pluginVersion":"7.3.4","pointradius":2,"points":false,"renderer":"flot","seriesOverrides":[],"spaceLength":10,"stack":false,"steppedLine":false,"targets":[{"expr":"-sum(rate(ifOutOctets{instance=\"lon-mh-core6.london.mintel.ad\",ifName=\"A6\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Cogent - Out","refId":"A"},{"expr":"sum(rate(ifInOctets{instance=\"lon-mh-core6.london.mintel.ad\",ifName=\"A6\"}[5m])) * 8","hide":false,"interval":"","legendFormat":"Cogent - In","refId":"D"}],"thresholds":[{"$$hashKey":"object:218","colorMode":"critical","fill":true,"line":true,"op":"gt","value":524288000,"yaxis":"left"},{"$$hashKey":"object:1068","colorMode":"critical","fill":true,"line":true,"op":"lt","value":-524288000,"yaxis":"left"}],"timeFrom":null,"timeRegions":[],"timeShift":null,"title":"London - Mintel House","tooltip":{"shared":true,"sort":2,"value_type":"individual"},"type":"graph","xaxis":{"buckets":null,"mode":"time","name":null,"show":true,"values":[]},"yaxes":[{"$$hashKey":"object:173","format":"binBps","label":null,"logBase":1,"max":"576716800","min":"-576716800","show":true},{"$$hashKey":"object:174","decimals":null,"format":"short","label":null,"logBase":1,"max":null,"min":null,"show":true}],"yaxis":{"align":false,"alignLevel":null}}],"refresh":"30s","schemaVersion":26,"style":"dark","tags":[],"templating":{"list":[]},"time":{"from":"now-24h","to":"now"},"timepicker":{},"timezone":"","title":"ISP Throughput","uid":"734d9062aede67975e52547c381b69b0","version":4}
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations \u0026 Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 1,
+  "id": 83,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"core2-vlan2.shanghai.mintel.ad\",ifName=\"B1\"}[5m])) * 8",
+          "interval": "",
+          "legendFormat": "China Telecom - Out",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"core2-vlan2.shanghai.mintel.ad\",ifName=\"B1\"}[5m])) * 8",
+          "interval": "",
+          "legendFormat": "China Telecom - In",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:245",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 31457280,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:873",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -31457280,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Shanghai",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": null,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "41943040",
+          "min": "-41943040",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "interval": "2m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:154",
+          "alias": "Prometheus Output",
+          "fill": 0,
+          "linewidth": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"core3-vlan2.shanghai.mintel.ad\",ifName=\"B2\"}[5m])) * 8",
+          "interval": "",
+          "legendFormat": "Zayo - Out",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"core3-vlan2.shanghai.mintel.ad\",ifName=\"B2\"}[5m])) * 8",
+          "interval": "",
+          "legendFormat": "Zayo - In",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:245",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 31457280,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:873",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -31457280,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Shanghai",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": null,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "41943040",
+          "min": "-41943040",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "interval": "2m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:319",
+          "alias": "Prometheus Output",
+          "fill": 0,
+          "linewidth": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum (rate(ifOutOctets{instance=~\"chi-dc-edge0.*.chi-dc.mintel.ad\",ifName=\"eth0\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "GTT - Out",
+          "refId": "B"
+        },
+        {
+          "expr": "sum (rate(ifInOctets{instance=~\"chi-dc-edge0.*.chi-dc.mintel.ad\",ifName=\"eth0\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "GTT - In",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:218",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 209715200,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:951",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -209715200,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Chi-DC",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": null,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "262144000",
+          "min": "-262144000",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "interval": "2m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:194",
+          "alias": "Prometheus Output",
+          "fill": 0,
+          "linewidth": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"vlan4-lon-ef-core2.lon-dc.mintel.ad\",ifName=\"1/48\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Exponential-E - Out",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"vlan4-lon-ef-core2.lon-dc.mintel.ad\",ifName=\"1/48\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Exponential-E - In",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:218",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 419430400,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:1029",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -419430400,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Lon-DC",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": -3,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "471859200",
+          "min": "-471859200",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"vlan40.core4.chicago.mintel.ad\",ifName=\"B24\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Zayo - Out",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"vlan40.core4.chicago.mintel.ad\",ifName=\"B24\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Zayo - In",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:218",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 209715200,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:990",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -209715200,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Chicago",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": null,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "262144000",
+          "min": "-262144000",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "interval": "2m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:271",
+          "alias": "Prometheus Output",
+          "fill": 0,
+          "linewidth": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"vlan40.core3.chicago.mintel.ad\",ifName=\"B23\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Cogent - Out",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"vlan40.core3.chicago.mintel.ad\",ifName=\"B23\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Cogent - In",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:218",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 209715200,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:990",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -209715200,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Chicago",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": null,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "262144000",
+          "min": "-262144000",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"sg-off-core1.apac.mintel.ad\",ifName=\"A1\"}[5m])) * 8",
+          "interval": "",
+          "legendFormat": "StarHub / NGN SWE - Out",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"sg-off-core1.apac.mintel.ad\",ifName=\"A1\"}[5m])) * 8",
+          "interval": "",
+          "legendFormat": "StarHub / NGN SWE - In",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:245",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 52428800,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:912",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -52428800,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Singapore",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": null,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "57671680",
+          "min": "-57671680",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "hiddenSeries": false,
+      "id": 11,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"sg-off-core2.apac.mintel.ad\",ifName=\"A1\"}[5m])) * 8",
+          "interval": "",
+          "legendFormat": "Citic Telecom (Pacific) - Out",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"sg-off-core2.apac.mintel.ad\",ifName=\"A1\"}[5m])) * 8",
+          "interval": "",
+          "legendFormat": "Citic Telecom (Pacific) - In",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:245",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 31457280,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:912",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -31457280,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Singapore",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": null,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "36700160",
+          "min": "-36700160",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 28
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"sunway.apac.mintel.ad\", ifName=\"Gi0.101\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Time - Out",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"sunway.apac.mintel.ad\", ifName=\"Gi0.101\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Time - In",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:218",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 10485760,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:1107",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -10485760,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Kuala Lumpur",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "10485760",
+          "min": "-10485760",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 28
+      },
+      "hiddenSeries": false,
+      "id": 12,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"sunway.apac.mintel.ad\", ifName=\"Gi0.500\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "UniFi - Out",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"sunway.apac.mintel.ad\", ifName=\"Gi0.500\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "UniFi - In",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:218",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 10485760,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:1107",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -10485760,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Kuala Lumpur",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "10485760",
+          "min": "-10485760",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 35
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"lon-mh-core5.london.mintel.ad\",ifName=\"A3\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Exponential-E - Out",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"lon-mh-core5.london.mintel.ad\",ifName=\"A3\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Exponential-E - In",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:218",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 419430400,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:1068",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -419430400,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "London - Mintel House",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "decimals": null,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": "471859200",
+          "min": "-471859200",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "cortex-onprem-prod",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 35
+      },
+      "hiddenSeries": false,
+      "id": 7,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "-sum(rate(ifOutOctets{instance=\"lon-mh-core6.london.mintel.ad\",ifName=\"A6\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Cogent - Out",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(rate(ifInOctets{instance=\"lon-mh-core6.london.mintel.ad\",ifName=\"A6\"}[5m])) * 8",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Cogent - In",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [
+        {
+          "$$hashKey": "object:218",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 524288000,
+          "yaxis": "left"
+        },
+        {
+          "$$hashKey": "object:1068",
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -524288000,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "London - Mintel House",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:173",
+          "format": "binBps",
+          "label": null,
+          "logBase": 1,
+          "max": "576716800",
+          "min": "-576716800",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:174",
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "ISP Throughput",
+  "uid": "734d9062aede67975e52547c381b69b0",
+  "version": 4
+}
