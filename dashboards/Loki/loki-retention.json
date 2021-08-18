@@ -1563,7 +1563,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Loki / Retention",
+  "title": "Retention",
   "uid": "retention",
   "version": 0
 }

@@ -304,7 +304,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Cortex / Slow Queries",
+  "title": "Slow Queries",
   "uid": "e6f3091e29d2636e3b8393447e925668",
   "version": 0
 }

@@ -302,7 +302,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Mintel / EKS Logs (qa)",
+  "title": "EKS Logs (qa)",
   "uid": "a0cbad6cfd7aff402db9f5eff8184876qa",
   "version": 0
 }

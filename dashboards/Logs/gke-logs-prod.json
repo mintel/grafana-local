@@ -302,7 +302,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Mintel / GKE Logs (prod)",
+  "title": "GKE Logs (prod)",
   "uid": "c2aa61670c45a708fbda4702becc8b4cprod",
   "version": 0
 }
