@@ -9,7 +9,6 @@
   "gnetId": null,
   "graphTooltip": 1,
   "hideControls": false,
-  "id": null,
   "links": [
     {
       "asDropdown": true,
@@ -303,6 +302,5 @@
   },
   "timezone": "browser",
   "title": "EKS Logs (qa)",
-  "uid": "a0cbad6cfd7aff402db9f5eff8184876qa",
-  "version": 0
+  "uid": "a0cbad6cfd7aff402db9f5eff8184876qa"
 }

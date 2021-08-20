@@ -8,7 +8,6 @@
   "gnetId": null,
   "graphTooltip": 0,
   "hideControls": false,
-  "id": null,
   "links": [],
   "refresh": "",
   "rows": [
@@ -868,5 +867,5 @@
   },
   "timezone": "browser",
   "title": "Nodes",
-  "version": 0
+  "uid": "8DS6KA77z"
 }

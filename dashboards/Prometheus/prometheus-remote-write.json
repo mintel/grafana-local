@@ -8,7 +8,6 @@
   "gnetId": null,
   "graphTooltip": 0,
   "hideControls": false,
-  "id": null,
   "links": [],
   "refresh": "",
   "rows": [
@@ -1437,5 +1436,5 @@
   },
   "timezone": "browser",
   "title": "Prometheus Remote Write",
-  "version": 0
+  "uid": "lhN6KA77z"
 }

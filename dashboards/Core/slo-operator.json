@@ -9,7 +9,6 @@
   "gnetId": null,
   "graphTooltip": 1,
   "hideControls": true,
-  "id": null,
   "links": [],
   "refresh": "",
   "rows": [
@@ -508,6 +507,5 @@
   },
   "timezone": "browser",
   "title": "SLO Operator",
-  "uid": "3f65a6510f29a5869bdbe09ff0f2577e",
-  "version": 0
+  "uid": "3f65a6510f29a5869bdbe09ff0f2577e"
 }

@@ -8,7 +8,6 @@
   "gnetId": null,
   "graphTooltip": 0,
   "hideControls": false,
-  "id": null,
   "links": [],
   "refresh": "10s",
   "rows": [
@@ -1063,6 +1062,5 @@
   },
   "timezone": "UTC",
   "title": "Proxy",
-  "uid": "632e265de029684c40b21cb76bca4f94",
-  "version": 0
+  "uid": "632e265de029684c40b21cb76bca4f94"
 }

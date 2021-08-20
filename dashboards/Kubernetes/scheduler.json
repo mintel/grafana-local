@@ -8,7 +8,6 @@
   "gnetId": null,
   "graphTooltip": 0,
   "hideControls": false,
-  "id": null,
   "links": [],
   "refresh": "10s",
   "rows": [
@@ -930,6 +929,5 @@
   },
   "timezone": "UTC",
   "title": "Scheduler",
-  "uid": "2e6b6a3b4bddf1427b3a55aa1311c656",
-  "version": 0
+  "uid": "2e6b6a3b4bddf1427b3a55aa1311c656"
 }

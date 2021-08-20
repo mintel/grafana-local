@@ -9,7 +9,6 @@
   "gnetId": null,
   "graphTooltip": 1,
   "hideControls": false,
-  "id": null,
   "links": [],
   "refresh": "",
   "rows": [
@@ -1809,6 +1808,5 @@
   },
   "timezone": "browser",
   "title": "Cluster Health",
-  "uid": "8f949992e47166e5800aff66be3b5631",
-  "version": 0
+  "uid": "8f949992e47166e5800aff66be3b5631"
 }

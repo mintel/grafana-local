@@ -9,7 +9,6 @@
   "gnetId": null,
   "graphTooltip": 1,
   "hideControls": false,
-  "id": null,
   "links": [],
   "panels": [
     {
@@ -1730,7 +1729,6 @@
     ]
   },
   "timezone": "browser",
-  "title": "Event Bus",
-  "uid": "7be0d89b4c9a688469af62378bdd8a77",
-  "version": 0
+  "title": "Event Bus Overview",
+  "uid": "7be0d89b4c9a688469af62378bdd8a77"
 }

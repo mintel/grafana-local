@@ -9,7 +9,6 @@
   "gnetId": null,
   "graphTooltip": 1,
   "hideControls": false,
-  "id": null,
   "links": [
     {
       "asDropdown": false,
@@ -2742,7 +2741,6 @@
     ]
   },
   "timezone": "browser",
-  "title": "Portal",
-  "uid": "cee4e8059425a65429cce97a09899644",
-  "version": 0
+  "title": "Portal Overview",
+  "uid": "cee4e8059425a65429cce97a09899644"
 }

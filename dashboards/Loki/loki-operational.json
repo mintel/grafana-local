@@ -25,7 +25,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 68,
   "iteration": 1588704280892,
   "links": [
     {
@@ -6729,6 +6728,5 @@
   },
   "timezone": "",
   "title": "Loki Operational",
-  "uid": "f6fe30815b172c9da7e813c15ddfe607",
-  "version": 1
+  "uid": "f6fe30815b172c9da7e813c15ddfe607"
 }
