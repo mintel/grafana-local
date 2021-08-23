@@ -96,7 +96,7 @@ func syncRemoteToLocal(ctx context.Context, c *sdk.Client, dir string) error {
 			return false
 		}
 
-		// Remove the "id" key; this is specific
+		// Remove the "id" key; this ID is specific to the Grafana instance.
 		b, err = sjson.DeleteBytes(b, "id")
 		if err != nil {
 			return false
