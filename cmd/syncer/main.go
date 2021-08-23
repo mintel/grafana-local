@@ -19,7 +19,7 @@ import (
 	"github.com/grafana-tools/sdk"
 	"github.com/tidwall/sjson"
 
-	"gitlab.com/mintel/satoshi/kubernetes/grafana/cmd/syncer/dashboard"
+	"gitlab.com/mintel/personal-dev/jdoepke/grafana/cmd/syncer/dashboard"
 )
 
 var (

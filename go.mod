@@ -1,4 +1,4 @@
-module gitlab.com/mintel/satoshi/kubernetes/grafana
+module gitlab.com/mintel/personal-dev/jdoepke/grafana
 
 go 1.16
 
