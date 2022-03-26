@@ -5,7 +5,7 @@
 
 # hadolint ignore=DL3006,DL3049
 FROM golang:1.17 AS build
-ARG GOPRIVATE="*gitlab.com/mintel/*"
+##ARG GOPRIVATE="*gitlab.com/mintel/*"
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN --mount=type=secret,id=netrc,dst=/root/.netrc \
@@ -27,7 +27,7 @@ RUN --mount=type=cache,target=/go/src,sharing=locked \
 # hadolint ignore=DL3049
 FROM build AS test
 
-ENV GOPRIVATE="*gitlab.com/mintel/*"
+##ENV GOPRIVATE="*gitlab.com/mintel/*"
 ##ENV EBTAILER_PORT=80
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -50,7 +50,7 @@ RUN --mount=type=cache,id=/go/src,target=/gotmp/src,sharing=locked \
     rsync -ra /gotmp/ /go/
 
 RUN go install github.com/githubnemo/CompileDaemon@v1.3.0
-CMD ["CompileDaemon", "-include", "*.go", "-include", "*.html", "-include", "go.*", "--command=./ebtailer"]
+CMD ["CompileDaemon", "-include", "*.go", "-include", "*.html", "-include", "go.*", "--command=./cmd/syncer"]
 
 #########################################################
 # RELEASE IMAGE
@@ -59,13 +59,13 @@ CMD ["CompileDaemon", "-include", "*.go", "-include", "*.html", "-include", "go.
 # hadolint ignore=DL3006,DL3007
 FROM gcr.io/distroless/base:latest AS release
 
-USER nobody
+USER root
 
 ##ENV EBTAILER_PORT=8080
 ##EXPOSE 8080
 
-COPY --from=build --chown=root:root /app/ebtailer /app/ebtailer
-ENTRYPOINT ["/app/ebtailer"]
+COPY --from=build --chown=root:root /app/cmd/syncer /app/cmd/syncer
+ENTRYPOINT ["/app/cmd/syncer"]
 
 ARG GIT_DESCRIPTION
 ARG BUILD_DATE
@@ -73,8 +73,8 @@ ARG VCS_REF
 LABEL org.opencontainers.image.authors="Jaye Doepke <jdoepke@mintel.com>, Spencer Huff <shuff@mintel.com>" \
       org.opencontainers.image.title="grafana-local-syncer" \
       org.opencontainers.image.description="Sync dashboard files on disk to a local grafana instance." \
-      org.opencontainers.image.url="https://gitlab.com/mintel/everest/event-bus/tooling/ebtailer" \
-      org.opencontainers.image.source="git@gitlab.com:mintel/everest/event-bus/tooling/ebtailer.git" \
+      org.opencontainers.image.url="https://github.com/mintel/grafana-local-sync" \
+      org.opencontainers.image.source="git@github.com:mintel/grafana-local-sync.git" \
       org.opencontainers.image.version="$GIT_DESCRIPTION" \
       org.opencontainers.image.vendor="Mintel Group Ltd." \
       org.opencontainers.image.licences="MIT" \
