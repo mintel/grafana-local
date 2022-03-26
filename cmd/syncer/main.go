@@ -225,33 +225,6 @@ func listRemoteDashboards(ctx context.Context, c *sdk.Client) (*dashboard.Set, e
 	return result, nil
 }
 
-func PtrToString(s *string) string {
-	if s == nil {
-		return ""
-	}
-	return *s
-}
-
-func ReadJSONFile(path string, v interface{}) error {
-	f, err := os.Open(path)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	return json.NewDecoder(f).Decode(v)
-}
-
-func WriteJSONFile(path string, v interface{}) error {
-	f, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	e := json.NewEncoder(f)
-	e.SetIndent("", "  ")
-	return e.Encode(v)
-}
-
 func ValidateDashboards(dbs *dashboard.Set) (err error) {
 	folderTitles := make(map[string]struct{})
 	dbs.Each(func(item dashboard.Dashboard) bool {
