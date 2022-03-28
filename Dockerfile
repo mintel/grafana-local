@@ -5,7 +5,6 @@
 
 # hadolint ignore=DL3006,DL3049
 FROM golang:1.17 AS build
-##ARG GOPRIVATE="*gitlab.com/mintel/*"
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN --mount=type=secret,id=netrc,dst=/root/.netrc \
@@ -26,9 +25,6 @@ RUN --mount=type=cache,target=/go/src,sharing=locked \
 
 # hadolint ignore=DL3049
 FROM build AS test
-
-##ENV GOPRIVATE="*gitlab.com/mintel/*"
-##ENV EBTAILER_PORT=80
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -57,15 +53,14 @@ CMD ["CompileDaemon", "-include", "*.go", "-include", "*.html", "-include", "go.
 #########################################################
 
 # hadolint ignore=DL3006,DL3007
-FROM gcr.io/distroless/base:latest AS release
+FROM ubuntu:latest AS release
 
 USER root
 
-##ENV EBTAILER_PORT=8080
-##EXPOSE 8080
-
-COPY --from=build --chown=root:root /app/cmd/syncer /app/cmd/syncer
-ENTRYPOINT ["/app/cmd/syncer"]
+COPY --from=build /app/syncer /app/syncer
+# ENTRYPOINT will not work because we use a bind mount (the volume does not exist until the container is running).
+# Use something like this when running this image:
+# docker run --mount type=bind,source=<DASHBOARD_JSON_DIRECTORY>,target=/app/dashboards --network="host" <THIS_IMAGE> /app/syncer -user admin -pass admin -dir /app/dashboards
 
 ARG GIT_DESCRIPTION
 ARG BUILD_DATE
