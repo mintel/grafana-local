@@ -1,21 +1,12 @@
-# Grafana Dashboard Local Dev
+# grafana-local-sync
 
-Testing a local dev setup for developing Grafana dashboards.
+Docker image containing a go app that syncs dashboards stored in a directory to a local grafana instance. This allows developers to edit the dashboard using the grafana web UI and have their changes show up on their local disk.
 
-## Build
-
-```sh
-go build ./cmd/syncer
-```
-
-## Run
+## Sample Usage
 
 ```sh
-docker run --rm -it -p 3000:3000 grafana/grafana:latest
+# Assuming you have a local grafana running on port 3000 using something like:
+# docker run --rm -d -p 3000:3000 grafana/grafana:latest
 
-# Login into the instance and change the admin password.
-
-./syncer -user admin -pass PASSWORD -dir ./dashboards
+docker run --rm -it --mount type=bind,source=${LOCAL_DASHBOARD_DIRECTORY},target=${GRAFANA_DASHBOARD_DIRECTORY}/LocalDev --network="host" mintel/grafana-local-sync:latest -user admin -pass ${GRAFANA_ADMIN_PASSWORD} -dir ${GRAFANA_DASHBOARD_DIRECTORY}
 ```
-
-This will load the dashboards from on-disk to the Grafana container, and then - in a loop - fetch the dashboards from Grafana and write them to disk.
