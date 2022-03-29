@@ -7,8 +7,7 @@
 FROM golang:1.17 AS build
 WORKDIR /app
 COPY go.mod go.sum ./
-RUN --mount=type=secret,id=netrc,dst=/root/.netrc \
-    --mount=type=cache,target=/go/src,sharing=locked \
+RUN --mount=type=cache,target=/go/src,sharing=locked \
     --mount=type=cache,target=/go/pkg,sharing=locked \
     --mount=type=cache,target=/root/.cache/go-build,sharing=locked \
     go mod download
@@ -58,9 +57,7 @@ FROM ubuntu:latest AS release
 USER root
 
 COPY --from=build /app/syncer /app/syncer
-# ENTRYPOINT will not work because we use a bind mount (the volume does not exist until the container is running).
-# Use something like this when running this image:
-# docker run --mount type=bind,source=<DASHBOARD_JSON_DIRECTORY>,target=/app/dashboards --network="host" <THIS_IMAGE> /app/syncer -user admin -pass admin -dir /app/dashboards
+VOLUME ["/app/dashboards"]
 
 ARG GIT_DESCRIPTION
 ARG BUILD_DATE
@@ -75,10 +72,3 @@ LABEL org.opencontainers.image.authors="Jaye Doepke <jdoepke@mintel.com>, Spence
       org.opencontainers.image.licences="MIT" \
       org.opencontainers.image.created="$BUILD_DATE" \
       org.opencontainers.image.revision="$VCS_REF"
-
-#########################################################
-# DEFAULT IMAGE
-# Build the release image by default.
-#########################################################
-
-FROM release
