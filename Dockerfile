@@ -15,7 +15,7 @@ COPY . ./
 RUN --mount=type=cache,target=/go/src,sharing=locked \
     --mount=type=cache,target=/go/pkg,sharing=locked \
     --mount=type=cache,target=/root/.cache/go-build,sharing=locked \
-    go build ./cmd/syncer
+    CGO_ENABLED=0 go build ./cmd/syncer
 
 #########################################################
 # TEST IMAGE
@@ -52,12 +52,12 @@ CMD ["CompileDaemon", "-include", "*.go", "-include", "*.html", "-include", "go.
 #########################################################
 
 # hadolint ignore=DL3006,DL3007
-FROM ubuntu:latest AS release
+FROM gcr.io/distroless/static:latest AS release
 
-USER root
+USER 1000:1000
 
-COPY --from=build /app/syncer /app/syncer
-VOLUME ["/app/dashboards"]
+COPY --from=build --chown=root:root /app/syncer /app/syncer
+ENTRYPOINT ["/app/syncer"]
 
 ARG GIT_DESCRIPTION
 ARG BUILD_DATE
