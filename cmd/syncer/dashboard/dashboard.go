@@ -18,11 +18,17 @@ type Dashboard struct {
 }
 
 func NewFromFoundBoard(db sdk.FoundBoard) Dashboard {
+	folderDirectory := ""
+	if db.FolderTitle == "" {
+		folderDirectory = "General"
+	} else {
+		folderDirectory = db.FolderTitle
+	}
 	return Dashboard{
 		FolderTitle: db.FolderTitle,
 		Title:       db.Title,
 		UID:         db.UID,
-		Filename:    filepath.Join(db.FolderTitle, filepath.Base(db.URL)+".json"),
+		Filename:    filepath.Join(folderDirectory, filepath.Base(db.URL)+".json"),
 	}
 }
 
