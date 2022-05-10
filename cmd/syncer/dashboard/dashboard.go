@@ -11,10 +11,11 @@ import (
 // Dashboard contains the bare minimum information necessary to
 // uniquely identify a Grafana dashboard and sync it disk.
 type Dashboard struct {
-	FolderTitle string `json:"-"`
-	Title       string `json:"title"`
-	UID         string `json:"uid"`
-	Filename    string `json:"-"`
+	FolderTitle     string `json:"-"`
+	FolderDirectory string ""
+	Title           string `json:"title"`
+	UID             string `json:"uid"`
+	Filename        string `json:"-"`
 }
 
 func NewFromFoundBoard(db sdk.FoundBoard) Dashboard {
@@ -25,10 +26,11 @@ func NewFromFoundBoard(db sdk.FoundBoard) Dashboard {
 		folderDirectory = db.FolderTitle
 	}
 	return Dashboard{
-		FolderTitle: db.FolderTitle,
-		Title:       db.Title,
-		UID:         db.UID,
-		Filename:    filepath.Join(folderDirectory, filepath.Base(db.URL)+".json"),
+		FolderTitle:     db.FolderTitle,
+		FolderDirectory: folderDirectory,
+		Title:           db.Title,
+		UID:             db.UID,
+		Filename:        filepath.Join(folderDirectory, filepath.Base(db.URL)+".json"),
 	}
 }
 

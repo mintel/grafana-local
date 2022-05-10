@@ -116,19 +116,13 @@ func syncRemoteToLocal(ctx context.Context, c *sdk.Client, dir string) error {
 
 		// If this request for nested folders in the grafana UI is implemented, we will need to update this
 		// https://github.com/grafana/grafana/issues/10339
-		folderDirectory := ""
-		if db.FolderTitle == "" {
-			folderDirectory = "General"
-		} else {
-			folderDirectory = db.FolderTitle
-		}
-		if _, err := os.Stat(filepath.Join(dir, folderDirectory)); os.IsNotExist(err) {
-			if err = os.Mkdir(filepath.Join(dir, folderDirectory), 0644); err != nil {
+		if _, err := os.Stat(filepath.Join(dir, db.FolderDirectory)); os.IsNotExist(err) {
+			if err = os.Mkdir(filepath.Join(dir, db.FolderDirectory), 0644); err != nil {
 				return false
 			}
 		}
 
-		log.Printf("Writing dashboard '%s / %s' to %s", folderDirectory, db.Title, filepath.Join(dir, db.Filename))
+		log.Printf("Writing dashboard '%s / %s' to %s", db.FolderDirectory, db.Title, filepath.Join(dir, db.Filename))
 		if err = ioutil.WriteFile(filepath.Join(dir, db.Filename), buf.Bytes(), 0644); err != nil {
 			return false
 		}
