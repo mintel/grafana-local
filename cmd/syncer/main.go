@@ -24,7 +24,7 @@ import (
 
 var (
 	grafanaAddr = flag.String("addr", "http://localhost:3000", "The address Grafana is listening on.")
-	dir         = flag.String("dir", ".", "The directory of Grafana dashboards to be synced.")
+	dir         = flag.String("dir", "/app/dashboards", "The directory of Grafana dashboards to be synced.")
 
 	username = flag.String("user", "", "")
 	password = flag.String("pass", "", "")
@@ -68,7 +68,7 @@ func main() {
 			if err := syncRemoteToLocal(context.Background(), client, *dir); err != nil {
 				log.Fatal(err)
 			}
-			c = time.After(30 * time.Second)
+			c = time.After(10 * time.Second)
 			log.Print("done.")
 		}
 	}
@@ -102,13 +102,27 @@ func syncRemoteToLocal(ctx context.Context, c *sdk.Client, dir string) error {
 			return false
 		}
 
+		// Remove the "version" key.
+		b, err = sjson.DeleteBytes(b, "version")
+		if err != nil {
+			return false
+		}
+
 		// Use pretty indentation for nicer MRs.
 		buf := bytes.Buffer{}
 		if err = json.Indent(&buf, b, "", "  "); err != nil {
 			return false
 		}
 
-		log.Printf("Writing dashboard '%s / %s' to %s", db.FolderTitle, db.Title, filepath.Join(dir, db.Filename))
+		// If this request for nested folders in the grafana UI is implemented, we will need to update this
+		// https://github.com/grafana/grafana/issues/10339
+		if _, err := os.Stat(filepath.Join(dir, db.FolderDirectory)); os.IsNotExist(err) {
+			if err = os.Mkdir(filepath.Join(dir, db.FolderDirectory), 0644); err != nil {
+				return false
+			}
+		}
+
+		log.Printf("Writing dashboard '%s / %s' to %s", db.FolderDirectory, db.Title, filepath.Join(dir, db.Filename))
 		if err = ioutil.WriteFile(filepath.Join(dir, db.Filename), buf.Bytes(), 0644); err != nil {
 			return false
 		}
@@ -117,12 +131,6 @@ func syncRemoteToLocal(ctx context.Context, c *sdk.Client, dir string) error {
 	if err != nil {
 		return err
 	}
-
-	toDelete := dashboard.Difference(localDashboards, remoteDashboards)
-	toDelete.Each(func(db dashboard.Dashboard) bool {
-		err = os.Remove(filepath.Join(dir, db.Filename))
-		return err == nil
-	})
 
 	return err
 }
