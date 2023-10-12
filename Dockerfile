@@ -4,7 +4,7 @@
 #########################################################
 
 # hadolint ignore=DL3006,DL3049
-FROM golang:1.17 AS build
+FROM golang:1.21 AS build
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN --mount=type=cache,target=/go/src,sharing=locked \
