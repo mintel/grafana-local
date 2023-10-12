@@ -7,7 +7,6 @@ import (
 	"flag"
 	"fmt"
 	"io/fs"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -16,6 +15,7 @@ import (
 	"syscall"
 	"time"
 
+	retry "github.com/avast/retry-go"
 	"github.com/grafana-tools/sdk"
 	"github.com/tidwall/sjson"
 
@@ -49,7 +49,12 @@ func main() {
 		log.Fatalf("error creating Grafana client: %s", err)
 	}
 
-	if err := syncLocalToRemote(context.Background(), client, *dir); err != nil {
+	err = retry.Do(
+		func() error {
+			return syncLocalToRemote(context.Background(), client, *dir)
+		},
+	)
+	if err != nil {
 		log.Fatal(err)
 	}
 
@@ -65,7 +70,12 @@ func main() {
 			return
 		case <-c:
 			log.Print("Syncing Grafana dashboards to local directory...")
-			if err := syncRemoteToLocal(context.Background(), client, *dir); err != nil {
+			err = retry.Do(
+				func() error {
+					return syncRemoteToLocal(context.Background(), client, *dir)
+				},
+			)
+			if err != nil {
 				log.Fatal(err)
 			}
 			c = time.After(10 * time.Second)
@@ -123,7 +133,7 @@ func syncRemoteToLocal(ctx context.Context, c *sdk.Client, dir string) error {
 		}
 
 		log.Printf("Writing dashboard '%s / %s' to %s", db.FolderDirectory, db.Title, filepath.Join(dir, db.Filename))
-		if err = ioutil.WriteFile(filepath.Join(dir, db.Filename), buf.Bytes(), 0644); err != nil {
+		if err = os.WriteFile(filepath.Join(dir, db.Filename), buf.Bytes(), 0644); err != nil {
 			return false
 		}
 		return true

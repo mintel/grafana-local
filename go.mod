@@ -3,6 +3,7 @@ module github.com/mintel/grafana-local-sync
 go 1.21
 
 require (
+	github.com/avast/retry-go v3.0.0+incompatible
 	github.com/grafana-tools/sdk v0.0.0-20220919052116-6562121319fc
 	github.com/tidwall/sjson v1.2.5
 )
